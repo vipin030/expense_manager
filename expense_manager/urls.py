@@ -23,7 +23,9 @@ from rest_framework_jwt.views import verify_jwt_token
 
 
 router = routers.DefaultRouter()
-router.register(r'users',views.UserViewSet)
+router.register(r'users', views.UserViewSet)
+router.register(r'category', views.CategoryViewSet)
+router.register(r'add-expense', views.ExpenseViewSet)
 
 urlpatterns = [
     url(r'^api/', include(router.urls)),

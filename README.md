@@ -1,1 +1,6 @@
-Django Expense Manager
+Django Expense Manager  
+
+Implimentation:  
+
+JWT Authentication  
+API for Expense Manager   
