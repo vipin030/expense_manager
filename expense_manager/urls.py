@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
@@ -20,7 +21,6 @@ from expenseapp import views
 from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework_jwt.views import refresh_jwt_token
 from rest_framework_jwt.views import verify_jwt_token
-
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -35,3 +35,7 @@ urlpatterns = [
     url(r'^auth-jwt-verify/', verify_jwt_token),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns.append(url( r'^debug/',include(debug_toolbar.urls)))

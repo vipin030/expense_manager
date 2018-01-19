@@ -22,5 +22,5 @@ class CategoryViewSet(viewsets.ModelViewSet):
 	serializer_class = CategorySerializer
 
 class ExpenseViewSet(viewsets.ModelViewSet):
-	queryset = Expense.objects.all()
+	queryset = Expense.objects.all().select_related('user', 'category')
 	serializer_class = ExpenseSerializer
